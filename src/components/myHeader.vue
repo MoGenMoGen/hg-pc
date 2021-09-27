@@ -51,8 +51,14 @@
 				}]
 			}
 		},
+		watch: {
+		  $route(){
+		    
+		  },
+		},
 		methods: {
 			handleSelect(index,href) {
+				console.log(this.until.getWidth())
 				this.activeIndex = index
 				this.$router.push(href)
 			}
