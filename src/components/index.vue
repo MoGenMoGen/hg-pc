@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
-    <router-link to="/helloWWorld">123456</router-link>
+	  <img src="https://admin.zlhuiyun.com/storage/202007/08/auGHQgxkcMnv81g5kCSyRbIQLumsGalb.jpg">
+	  <img src="https://admin.zlhuiyun.com/storage/202007/08/auGHQgxkcMnv81g5kCSyRbIQLumsGalb.jpg">
+	  <router-link to="HelloWWorld">1111</router-link>
   </div>
 </template>
 
@@ -13,5 +15,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
+	.hello {
+		width: 100%;
+		img {
+			width: 100%;
+			height: 650px;
+			display: block;
+		}
+	}
 </style>
