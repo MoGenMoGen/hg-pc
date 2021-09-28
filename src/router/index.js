@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HelloWWorld from '../components/HelloWorld.vue'
-import index from '../components/index.vue'
+import index from '../pages/index.vue'
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -11,9 +10,5 @@ export default new VueRouter({
 		path: '/',
 		name: 'index',
 		component: index
-	},{
-		path: '/HelloWWorld',
-		name: 'HelloWWorld',
-		component: HelloWWorld
 	}]
 })

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style="{width:bWidth?bWidth+'px':'100%'}">
 	<myHeader></myHeader>
 	<router-view></router-view>
   </div>
@@ -12,6 +12,20 @@ export default {
   name: 'app',
   components: {
 	  myHeader,
+  },
+  mounted() {
+  	this.getWidth()
+  	window.onresize = () => {
+  		this.getWidth()
+  	}
+  },
+  methods: {
+  	getWidth() {
+  		let data = this.until.getWidth()
+  		console.log(data)
+  		this.bWidth = data.bWidth
+  		this.width = data.width
+  	}
   }
 }
 </script>

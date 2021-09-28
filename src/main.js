@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import ElementUI from 'element-ui'
+import store from './store/store';
 import {
   Apps,
   until,
@@ -19,4 +20,5 @@ Vue.prototype.reg = new reg();
 new Vue({
   render: h => h(App),
   router,
+  store,
 }).$mount('#app')
