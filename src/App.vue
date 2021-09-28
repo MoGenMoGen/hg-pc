@@ -7,11 +7,17 @@
 
 <script>
 import myHeader from "./components/myHeader.vue"
-
+import {mapState} from "vuex";
 export default {
   name: 'app',
   components: {
 	  myHeader,
+  },
+  data(){
+	return {
+		bWidth:0,
+		width:0,
+	}  
   },
   mounted() {
   	this.getWidth()
@@ -22,11 +28,14 @@ export default {
   methods: {
   	getWidth() {
   		let data = this.until.getWidth()
-  		console.log(data)
   		this.bWidth = data.bWidth
   		this.width = data.width
+  		this.$store.commit('changeWidth',data)
   	}
-  }
+  },
+  computed: {
+    ...mapState()
+  },
 }
 </script>
 
