@@ -2,16 +2,18 @@
   <div id="app" :style="{width:bWidth?bWidth+'px':'100%'}">
 	<myHeader></myHeader>
 	<router-view></router-view>
+	<myFooter></myFooter>
   </div>
 </template>
 
 <script>
 import myHeader from "./components/myHeader.vue"
+import myFooter from "./components/myFooter.vue"
 import {mapState} from "vuex";
 export default {
   name: 'app',
   components: {
-	  myHeader,
+	  myHeader,myFooter
   },
   data(){
 	return {

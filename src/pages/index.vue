@@ -10,8 +10,36 @@
 				</div>
 			</div>
 		</div>
-		<div style="height: 100px;">
-
+		<div class="common-item" style="background-color: #F6F6F6;">
+			<div class="common-box" :style="{width:width+'px'}">
+				<commonTitle titleCN="新闻资讯" titleEN="News" color="#F6F6F6"></commonTitle>
+			</div>
+		</div>
+		<div class="common-item">
+			<div class="common-box img-link" :style="{width:width+'px'}">
+				<div class="img-link-inner" v-for="(item,index) in 3" :key="index">
+					<img src="https://front.zlhuiyun.com/static/images/1.jpg">
+					<div>政策服务</div>
+				</div>
+			</div>
+		</div>
+		<div class="common-item" style="background-color: #F6F6F6;">
+			<div class="common-box" :style="{width:width+'px'}">
+				<commonTitle titleCN="供需平台" titleEN="Supply" color="#F6F6F6"></commonTitle>
+			</div>
+		</div>
+		<div class="common-item">
+			<div class="common-box" :style="{width:width+'px'}">
+				<commonTitle titleCN="创新活动" titleEN="Activity"></commonTitle>
+			</div>
+		</div>
+		<div class="common-item" style="background-color: #F6F6F6;">
+			<div class="common-box" :style="{width:width+'px'}">
+				<commonTitle titleCN="合作伙伴" titleEN="Partner" color="#F6F6F6"></commonTitle>
+				<div class="img-link-bottom">
+					<img src="../../public/images/logo-1.png" v-for="(item,index) in 10" :key="index">
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -23,7 +51,10 @@
 	import img4 from '../../public/images/招商入驻.png'
 	import img5 from '../../public/images/公共服务.png'
 	import img6 from '../../public/images/活动宣传.png'
-	import {mapState} from "vuex";
+	import commonTitle from "../components/commonTitle.vue"
+	import {
+		mapState
+	} from "vuex";
 	export default {
 		name: 'index',
 		props: {
@@ -58,15 +89,16 @@
 				}]
 			}
 		},
-		mounted() {
-		},
-		methods: {
+		mounted() {},
+		methods: {},
+		components: {
+			commonTitle
 		},
 		computed: {
-		  ...mapState([
-		    'bWidth',
-		    'width'
-		  ])
+			...mapState([
+				'bWidth',
+				'width'
+			])
 		},
 	}
 </script>
@@ -105,6 +137,60 @@
 					color: #606060;
 				}
 			}
+		}
+		
+		.common-item {
+			padding: 40px 0;
+			.common-box {
+				margin: 0 auto;
+				.img-link-bottom {
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: center;
+					img {
+						width: 19%;
+						height: 100px;
+						margin-right: 1%;
+						margin-bottom: 1%;
+					}
+					img:nth-child(5n) {
+						margin-right: 0;
+					}
+				}
+			}
+			.img-link {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				.img-link-inner {
+					width: 380px;
+					height: 240px;
+					position: relative;
+					cursor: pointer;
+					img {
+						width: 380px;
+						height: 240px;
+						object-fit: cover;
+					}
+					div {
+						width: 100%;
+						height: 45px;
+						line-height: 45px;
+						background-color: rgba(0,0,0,0.5);
+						text-align: center;
+						font-size: 18px;
+						color: #fff;
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						right: 0;
+					}
+				}
+				.img-link-inner:last-child {
+					margin-right: 0;
+				}
+			}
+			
 		}
 	}
 </style>
