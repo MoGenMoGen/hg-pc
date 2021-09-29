@@ -54,7 +54,10 @@
 									<span class="one-line" style="color: #909090;">12月13日，由兰州市委统战部主办，兰州市新的...</span>
 								</div>
 							</div>
-							<div class="news-right-list-two" v-if="newsIndex==1"></div>
+							<div class="news-right-list-two" v-if="newsIndex==1" v-for="(item,index) in 5" :key="index">
+								<p class="one-line"><span :style="{color:index==1?'#FF5400':'#0DA988'}">[重要]</span> 五一放假值班通知</p>
+								<p>2021-04-20</p>
+							</div>
 						</div>
 						<div class="news-right-more">
 							<div>查看更多 ></div>
@@ -74,11 +77,55 @@
 		<div class="common-item" style="background-color: #F6F6F6;">
 			<div class="common-box" :style="{width:width+'px'}">
 				<commonTitle titleCN="供需平台" titleEN="Supply" color="#F6F6F6"></commonTitle>
+				<div class="supply-box">
+					<div class="supply-left">
+						<div class="supply-top">
+							<div><div class="supply-place"></div><span>产业资源</span>（共6条）</div>
+							<div>查看更多 ></div>
+						</div>
+						<div class="supply-left-list">
+							<div class="supply-left-item" v-for="(item,index) in 6" :key="index">
+								<img class="supply-left-item-left" src="https://admin.zlhuiyun.com/storage/202011/30/iGD86WV66XnccnwvTmqnRF3Nzff3pN6S.jpg">
+								<div class="supply-left-item-right">
+									<span>商标顾问注册</span>
+									<div>
+										<p><img src="../../public/images/园区.png">资源</p>
+										<p><img src="../../public/images/时间.png">2021-06-30</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="supply-right">
+						<div class="supply-top" style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+							<div><div class="supply-place"></div><span>需求信息</span>（共7条）</div>
+							<div>查看更多 ></div>
+						</div>
+						<div class="supply-right-list"></div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="common-item">
 			<div class="common-box" :style="{width:width+'px'}">
 				<commonTitle titleCN="创新活动" titleEN="Activity"></commonTitle>
+				<div class="active-list">
+					<div class="active-item" v-for="(item,index) in 6" :key="index">
+						<div class="active-item-top">
+							<span class="active-item-top-b" v-if="index==0||index==3">未开始</span>
+							<span class="active-item-top-g" v-if="index==1||index==4">进行中</span>
+							<span class="active-item-top-e" v-if="index==2||index==5">已结束</span>
+							<img src="https://admin.zlhuiyun.com/storage/202109/07/banner4.jpeg">
+						</div>
+						<div class="active-item-info">
+							<p class="active-item-info-title one-line">庆祝共产党建党100周年大型活动</p>
+							<p class="active-item-info-cont one-line"><img src="../../public/images/地址.png">北京市 北京市 东城区</p>
+							<p class="active-item-info-cont"><img src="../../public/images/时间.png">2021-06-30</p>
+							<p class="active-item-info-btn" v-if="index==0||index==3">我要报名</p>
+							<p class="active-item-info-btn active-item-info-btn2" v-if="index!=0&&index!=3">查看详情</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="common-item" style="background-color: #F6F6F6;">
@@ -296,6 +343,7 @@
 								align-items: center;
 								color: #303030;
 								font-size: 12px;
+								cursor: pointer;
 								div {
 									display: flex;
 									flex-direction: column;
@@ -309,6 +357,23 @@
 								div:last-child {
 									padding-left: 10px;
 									box-sizing: border-box;
+								}
+							}
+							.news-right-list-two {
+								width: 100%;
+								height: 90px;
+								display: flex;
+								flex-direction: column;
+								justify-content: space-between;
+								font-size: 14px;
+								color: #303030;
+								padding: 20px 30px;
+								box-sizing: border-box;
+								border-bottom: 1px solid #F6F6F6;
+								cursor: pointer;
+								p:last-child {
+									font-size: 12px;
+									color: #909090;
 								}
 							}
 						}
@@ -327,8 +392,191 @@
 								font-size: 14px;
 								color: #909090;
 								border-radius: 3px;
+								cursor: pointer;
 							}
 						}
+					}
+				}
+				
+				.active-list {
+					display: flex;
+					flex-wrap: wrap;
+					.active-item {
+						width: 380px;
+						margin-right: 30px;
+						display: flex;
+						flex-direction: column;
+						box-sizing: border-box;
+						border: 1px solid #EAEAEA;
+						margin-bottom: 30px;
+						.active-item-top {
+							position: relative;
+							span {
+								width: 80px;
+								height: 32px;
+								line-height: 32px;
+								text-align: center;
+								position: absolute;
+								top: 20px;
+								left: 20px;
+								border-radius: 3px;
+								font-size: 14px;
+							}
+							.active-item-top-b {
+								background-color: #fff;
+								color: #EB6118;
+							}
+							.active-item-top-g {
+								background-color: #EB6118;
+								color: #fff;
+							}
+							.active-item-top-e {
+								background-color: #888888;
+								color: #fff;
+							}
+							img {
+								width: 100%;
+								height: 250px;
+							}
+						}
+						.active-item-info {
+							display: flex;
+							flex-direction: column;
+							width: 100%;
+							padding: 20px 20px 30px;
+							box-sizing: border-box;
+							.active-item-info-title {
+								font-size: 18px;
+								color: #303030;
+								margin-bottom: 20px;
+							}
+							.active-item-info-cont {
+								font-size: 14px;
+								color: #909090;
+								display: flex;
+								align-items: center;
+								margin-bottom: 10px;
+								img {
+									width: 15px;
+									height: 15px;
+									margin-right: 8px;
+								}
+							}
+							.active-item-info-btn {
+								width: 100px;
+								height: 32px;
+								line-height: 32px;
+								text-align: center;
+								font-size: 14px;
+								color: #fff;
+								background-color: #EB6118;
+								border-radius: 3px;
+								margin-top: 20px;
+								cursor: pointer;
+							}
+							.active-item-info-btn2 {
+								background-color: #fff;
+								border: 1px solid #EB6118;
+								color: #EB6118;
+								box-sizing: border-box;
+							}
+						}
+					}
+					.active-item:nth-child(3n) {
+						margin-right: 0;
+					}
+				}
+				.supply-box {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					.supply-top {
+						width: 100%;
+						padding: 30px;
+						box-sizing: border-box;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						font-size: 14px;
+						color: #909090;
+						div {
+							display: flex;
+							align-items: center;
+							.supply-place {
+								width: 4px;
+								height: 20px;
+								background-color: #FF5400;
+								margin-right: 15px;
+							}
+							span {
+								font-size: 18px;
+								color: #303030;
+							}
+						}
+						div:last-child {
+							cursor: pointer;
+						}
+					}
+					.supply-left {
+						width: 790px;
+						margin-right: 30px;
+						background-color: #fff;
+						.supply-left-list {
+							display: flex;
+							flex-wrap: wrap;
+							padding: 30px;
+							box-sizing: border-box;
+							.supply-left-item {
+								width: 350px;
+								height: 160px;
+								margin-right: 30px;
+								padding: 15px;
+								box-sizing: border-box;
+								display: flex;
+								align-items: center;
+								border: 1px solid #EAEAEA;
+								box-sizing: border-box;
+								margin-bottom: 30px;
+								.supply-left-item-left {
+									width: 138px;
+									height: 124px;
+									object-fit: cover;
+									margin-right: 30px;
+									flex-shrink: 1;
+								}
+								.supply-left-item-right {
+									max-width: 175px;
+									display: flex;
+									flex-direction: column;
+									justify-content: space-between;
+									span {
+										font-size: 18px;
+										color: #303030;
+									}
+									div {
+										p{
+											display: flex;
+											align-items: center;
+											font-size: 14px;
+											color: #909090;
+											img {
+												width: 15px;
+												height: 15px;
+												margin-right: 5px;
+											}
+										}
+									}
+									
+								}
+							}
+							.supply-left-item:nth-child(2n) {
+								margin-right: 0;
+							}
+						}
+					}
+					.supply-right {
+						width: 380px;
+						background-color: #fff;
 					}
 				}
 			}
