@@ -13,6 +13,54 @@
 		<div class="common-item" style="background-color: #F6F6F6;">
 			<div class="common-box" :style="{width:width+'px'}">
 				<commonTitle titleCN="新闻资讯" titleEN="News" color="#F6F6F6"></commonTitle>
+				<div class="news-box">
+					<div class="news-left">
+						<div class="news-left-top">
+							<el-carousel height="300px" indicator-position="none">
+								<el-carousel-item v-for="item in 4" :key="item">
+									<img src="../../public/images/logo-1.png" style="width: 100%;height: 100%;">
+									<div class="news-title">1111</div>
+								</el-carousel-item>
+							</el-carousel>
+						</div>
+						<div class="news-left-bottom">
+							<el-carousel height="260px" indicator-position="none">
+								<el-carousel-item v-for="item in 4" :key="item">
+									<img src="../../public/images/logo-1.png" style="width: 100%;height: 100%;">
+									<div class="news-title">1111</div>
+								</el-carousel-item>
+							</el-carousel>
+							<el-carousel height="260px" indicator-position="none">
+								<el-carousel-item v-for="item in 4" :key="item">
+									<img src="../../public/images/logo-1.png" style="width: 100%;height: 100%;">
+									<div class="news-title">1111</div>
+								</el-carousel-item>
+							</el-carousel>
+						</div>
+					</div>
+					<div class="news-right">
+						<div class="news-right-tab">
+							<div v-for="(item,index) in newsTab" :key="index" 
+							:class="{'news-right-tab-active':newsIndex==index}" @click="changeNews(index)">{{item}}</div>
+						</div>
+						<div class="news-right-list">
+							<div class="news-right-list-one" v-for="(item,index) in 5" :key="index" v-if="newsIndex==0">
+								<div>
+									<span style="font-size: 24px;">25</span>
+									<span>2021-03</span>
+								</div>
+								<div style="align-items: flex-start;">
+									<span class="one-line" style="font-size: 14px;">对话掌门人—青春正担当</span>
+									<span class="one-line" style="color: #909090;">12月13日，由兰州市委统战部主办，兰州市新的...</span>
+								</div>
+							</div>
+							<div class="news-right-list-two" v-if="newsIndex==1"></div>
+						</div>
+						<div class="news-right-more">
+							<div>查看更多 ></div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="common-item">
@@ -86,11 +134,17 @@
 					url: img6,
 					num: 66,
 					name: '活动宣传（条）'
-				}]
+				}],
+				newsTab: ['新闻资讯','通知公告'],
+				newsIndex: 0,
 			}
 		},
 		mounted() {},
-		methods: {},
+		methods: {
+			changeNews(index) {
+				this.newsIndex = index
+			}
+		},
 		components: {
 			commonTitle
 		},
@@ -104,6 +158,11 @@
 </script>
 
 <style scoped lang="less">
+	.one-line {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space:nowrap;
+	}
 	.container {
 		.top-bg {
 			width: 100%;
@@ -138,45 +197,164 @@
 				}
 			}
 		}
-		
+
 		.common-item {
 			padding: 40px 0;
+
 			.common-box {
 				margin: 0 auto;
+
 				.img-link-bottom {
 					display: flex;
 					flex-wrap: wrap;
 					justify-content: center;
+
 					img {
 						width: 19%;
 						height: 100px;
 						margin-right: 1%;
 						margin-bottom: 1%;
 					}
+
 					img:nth-child(5n) {
 						margin-right: 0;
 					}
 				}
+
+				.news-box {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					.news-title {
+						width: 100%;
+						height: 40px;
+						background-color: rgba(0,0,0,0.2);
+						line-height: 40px;
+						text-align: center;
+						color: #fff;
+						font-size: 16px;
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						right: 0;
+					}
+					.news-left {
+						width: 790px;
+						display: flex;
+						flex-direction: column;
+						margin-right: 30px;
+						.news-left-top {
+							position: relative;
+						}
+						.news-left-bottom {
+							display: flex;
+							align-items: center;
+							justify-content: space-between;
+							margin-top: 10px;
+							position: relative;
+							.el-carousel {
+								width: 390px;
+							}
+						}
+					}
+					.news-right {
+						width: 380px;
+						height: 570px;
+						display: flex;
+						flex-direction: column;
+						background-color: #fff;
+						.news-right-tab {
+							width: 100%;
+							height: 49px;
+							line-height: 49px;
+							border-bottom: 1px solid rgba(0,0,0,0.1);
+							display: flex;
+							align-items: center;
+							div {
+								text-align: center;
+								width: 190px;
+								color: #909090;
+								font-size: 18px;
+								cursor: pointer;
+							}
+							.news-right-tab-active {
+								background-color: #FF5400;
+								color: #fff;
+							}
+						}
+						.news-right-list {
+							width: 100%;
+							display: flex;
+							flex-direction: column;
+							.news-right-list-one {
+								width: 100%;
+								height: 90px;
+								padding: 20px;
+								box-sizing: border-box;
+								border-bottom: 1px solid #F6F6F6;
+								display: flex;
+								align-items: center;
+								color: #303030;
+								font-size: 12px;
+								div {
+									display: flex;
+									flex-direction: column;
+									justify-content: center;
+									align-items: center;
+								}
+								div:first-child {
+									border-right: 1px solid rgba(0,0,0,0.05);
+									padding-right: 10px;
+								}
+								div:last-child {
+									padding-left: 10px;
+									box-sizing: border-box;
+								}
+							}
+						}
+						.news-right-more {
+							width: 100%;
+							height: 65px;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							div {
+								width: 110px;
+								height: 32px;
+								line-height: 32px;
+								text-align: center;
+								border: 1px solid #CDCDCD;
+								font-size: 14px;
+								color: #909090;
+								border-radius: 3px;
+							}
+						}
+					}
+				}
 			}
+
 			.img-link {
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
+
 				.img-link-inner {
 					width: 380px;
 					height: 240px;
 					position: relative;
 					cursor: pointer;
+
 					img {
 						width: 380px;
 						height: 240px;
 						object-fit: cover;
 					}
+
 					div {
 						width: 100%;
 						height: 45px;
 						line-height: 45px;
-						background-color: rgba(0,0,0,0.5);
+						background-color: rgba(0, 0, 0, 0.5);
 						text-align: center;
 						font-size: 18px;
 						color: #fff;
@@ -186,11 +364,12 @@
 						right: 0;
 					}
 				}
+
 				.img-link-inner:last-child {
 					margin-right: 0;
 				}
 			}
-			
+
 		}
 	}
 </style>
