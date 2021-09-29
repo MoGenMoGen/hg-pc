@@ -87,9 +87,9 @@
 							<div class="supply-left-item" v-for="(item,index) in 6" :key="index">
 								<img class="supply-left-item-left" src="https://admin.zlhuiyun.com/storage/202011/30/iGD86WV66XnccnwvTmqnRF3Nzff3pN6S.jpg">
 								<div class="supply-left-item-right">
-									<span>商标顾问注册</span>
+									<span class="one-line">商标顾问注册</span>
 									<div>
-										<p><img src="../../public/images/园区.png">资源</p>
+										<p class="one-line" style="margin-bottom: 10px;"><img src="../../public/images/园区.png">资源</p>
 										<p><img src="../../public/images/时间.png">2021-06-30</p>
 									</div>
 								</div>
@@ -101,7 +101,11 @@
 							<div><div class="supply-place"></div><span>需求信息</span>（共7条）</div>
 							<div>查看更多 ></div>
 						</div>
-						<div class="supply-right-list"></div>
+						<div class="supply-right-list">
+							<div v-for="(item,index) in 7" :key="index" class="supply-right-item">
+								·<span style="color: #EB6118;">[需求]</span> <p class="one-line">铜衬的改进-寻求专家</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -206,6 +210,7 @@
 
 <style scoped lang="less">
 	.one-line {
+		width: 100%;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space:nowrap;
@@ -355,6 +360,7 @@
 									padding-right: 10px;
 								}
 								div:last-child {
+									max-width: 270px;
 									padding-left: 10px;
 									box-sizing: border-box;
 								}
@@ -524,7 +530,7 @@
 						.supply-left-list {
 							display: flex;
 							flex-wrap: wrap;
-							padding: 30px;
+							padding: 0 30px;
 							box-sizing: border-box;
 							.supply-left-item {
 								width: 350px;
@@ -537,6 +543,7 @@
 								border: 1px solid #EAEAEA;
 								box-sizing: border-box;
 								margin-bottom: 30px;
+								cursor: pointer;
 								.supply-left-item-left {
 									width: 138px;
 									height: 124px;
@@ -545,10 +552,11 @@
 									flex-shrink: 1;
 								}
 								.supply-left-item-right {
-									max-width: 175px;
+									max-width: 170px;
+									height: 124px;
 									display: flex;
 									flex-direction: column;
-									justify-content: space-between;
+									justify-content: space-around;
 									span {
 										font-size: 18px;
 										color: #303030;
@@ -577,6 +585,28 @@
 					.supply-right {
 						width: 380px;
 						background-color: #fff;
+						.supply-right-list {
+							display: flex;
+							flex-direction: column;
+							height: 570px;
+							.supply-right-item {
+								height: 73px;
+								border-bottom: 1px dotted rgba(0,0,0,0.1);
+								display: flex;
+								align-items: center;
+								color: #606060;
+								font-size: 14px;
+								padding: 30px;
+								box-sizing: border-box;
+								cursor: pointer;
+								span {
+									margin: 0 10px;
+								}
+								p {
+									max-width: 250px;
+								}
+							}
+						}
 					}
 				}
 			}
