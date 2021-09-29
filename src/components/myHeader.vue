@@ -34,7 +34,7 @@
 					href: '/'
 				}, {
 					name: '园区招商',
-					href: '/'
+					href: './park'
 				}, {
 					name: '创新政策',
 					href: '/'
@@ -81,8 +81,19 @@
 		  ...mapState([
 		    'bWidth',
 		    'width'
-		  ])
+		  ]),
+		  getQuery(){
+			  return this.$route.path
+		  }
 		},
+		watch:{
+			getQuery:{
+				handler(val){
+					if(val === '/')
+						this.activeIndex = 0
+				}
+			}
+		}
 	}
 </script>
 
