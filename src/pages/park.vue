@@ -2,11 +2,7 @@
 	<div class="container" :style="{width:bWidth?bWidth+'px':'100%'}">
 		<img src="https://front.zlhuiyun.com/static/images/park.jpg" class="top-bg">
 		<div class="top-info" :style="{width:width+'px'}">
-			<el-breadcrumb separator-class="el-icon-arrow-right">
-				<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-				<el-breadcrumb-item>园区招商</el-breadcrumb-item>
-
-			</el-breadcrumb>
+		     <breadcrumb :list='list'></breadcrumb>
 		</div>
 		<div class="searchBox" :style="{width:width+'px'}">
 			<el-input class="search" placeholder="园区名称	" prefix-icon="el-icon-search" v-model="input1">
@@ -70,6 +66,7 @@
 </template>
 
 <script>
+	import breadcrumb from '../components/breadcrumb.vue'
 	import {
 		mapState
 	} from "vuex";
@@ -80,6 +77,14 @@
 		},
 		data() {
 			return {
+				list:[{
+					name:"首页",
+					href:'/',
+				},{
+					name:"园区招商",
+					href:'',
+				}
+				],
 				 currentPage1: 1,
 				  pageSize:4, 
 				input1: "",
@@ -190,6 +195,9 @@
 				this.$router.push('/parkDetail')
 			}
 		},
+		components:{
+			breadcrumb,
+		}
 		
 
 	}
@@ -213,7 +221,7 @@
 		}
 
 		.searchBox {
-			margin: 40px auto;
+			margin: 20px auto 40px;
 			display: flex;
 
 			.search {

@@ -2,16 +2,39 @@
 	<div class="container" :style="{width:bWidth?bWidth+'px':'100%'}">
 		<img src="https://front.zlhuiyun.com/static/images/park.jpg" class="top-bg">
 		<div class="top-info" :style="{width:width+'px'}">
-			<el-breadcrumb separator-class="el-icon-arrow-right">
-				<el-breadcrumb-item :to="{ path: '/' }" class="nav">首页</el-breadcrumb-item>
-				<el-breadcrumb-item :to="{ path: '/park' }">园区招商</el-breadcrumb-item>
-				<el-breadcrumb-item>深圳5G产业园</el-breadcrumb-item>
-			</el-breadcrumb>
+			<breadcrumb :list="list"></breadcrumb>
 		</div>
+	<!-- 	<div class="contentHead">
+			<div class="list">
+				<div class="leftImg">
+					<img
+						src="https://admin.zlhuiyun.com/storage/202103/25/qingdao1.4d2dd00a18dfd8c2fcac3a89650918f3af43919c (1).png">
+				</div>
+				<div class="right">
+					<div class="title">
+						{{item.name}}
+					</div>
+					<div class="address">
+						{{item.address}}
+					</div>
+					<div class="level">
+						{{item.level}}
+					</div>
+					<div class="introduce">
+						{{item.content}}
+					</div>
+					<div class="btn">
+						了解详情
+					</div>
+				</div>
+			</div>
+		</div> -->
 	</div>
 </template>
 
 <script>
+	import breadcrumb from '../components/breadcrumb.vue'
+	
 	import {
 		mapState
 	} from "vuex";
@@ -22,7 +45,21 @@
 		},
 		data(){
 			return{
-				
+				list:[{
+					name:"首页",
+					href:'/',
+					
+				},
+				{
+						name:"园区招商",
+					href:'/park',
+					
+				},
+				{
+					name:"深圳5G产业园",
+					href:'',
+					
+				}]
 			}
 		},
 		computed: {
@@ -31,6 +68,9 @@
 				'width'
 			])
 		},
+		components:{
+			breadcrumb,
+		}
 	}
 </script>
 
