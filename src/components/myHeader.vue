@@ -55,7 +55,7 @@
 					href: '/'
 				}, {
 					name: '新闻资讯',
-					href: '/'
+					href: '/newsinfo'
 				}, {
 					name: '关于我们',
 					href: '/'

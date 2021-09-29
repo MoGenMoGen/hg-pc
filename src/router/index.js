@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import index from '../pages/index.vue'
 import park from '../pages/park.vue'
 import parkDetail from '../pages/parkDetail.vue'
+import newsinfo from '../pages/newsinfo.vue'
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -22,5 +23,12 @@ export default new VueRouter({
 		path: '/parkDetail',
 		name: 'parkDetail',
 		component: parkDetail
-	}]
+	},
+	{
+		// 新闻资讯
+		path: '/newsinfo',
+		name: 'newsinfo',
+		component: newsinfo
+	}
+]
 })
