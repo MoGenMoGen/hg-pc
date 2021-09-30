@@ -1,9 +1,9 @@
 <template>
 	<div class="container" :style="{width:bWidth?bWidth+'px':'100%'}">
-		<div class="mark" v-if="popShow==true">
+		<div class="mark" v-if="popShow==true" @touchmove.prevent>
 
 		</div>
-		<div class="windowPop" v-if="windowShowOne==true">
+		<div class="windowPop" v-if="windowShowOne==true" >
 			<div class="popHead">
 				预约参观
 				<span @click="popDown">x</span>
@@ -17,23 +17,219 @@
 					 	</span>
 						企业名称
 					 </div>
+					 <el-input
+					 style="width: 349px; margin-top: 10px;"
+					   placeholder="请输入企业名称"
+					   v-model="input"
+					   clearable>
+					 </el-input>
+					</div>
+					<div class="list">
+					 <div class="listTitle">
+					 	<span >
+					 		*
+					 	</span>
+						联系方式
+					 </div>
+					 <el-input
+					 style="width: 349px; margin-top: 10px;"
+					   placeholder="请输入联系方式"
+					   v-model="input"
+					   clearable>
+					 </el-input>
+					</div>
+					<div class="list">
+					 <div class="listTitle">
+					 	<span >
+					 		*
+					 	</span>
+						参观时间
+					 </div>
+					    <el-date-picker
+						style="width: 349px; margin-top: 10px;"
+					      v-model="value1"
+					      type="date"
+					      placeholder="选择日期">
+					    </el-date-picker>
+					</div>
+					
+					
+			</div>
+				<div class="bodyRight">
+					<div class="list">
+					 <div class="listTitle">
+					 	<span >
+					 		*
+					 	</span>
+						联系人
+					 </div>
+					 <el-input
+					 style="width: 349px; margin-top: 10px;"
+					   placeholder="请输入联系人"
+					   v-model="input"
+					   clearable>
+					 </el-input>
+					</div>		<div class="list">
+					 <div class="listTitle">
+					 	<span >
+					 		*
+					 	</span>
+						参观人数
+					 </div>
+					 <el-input
+					 style="width: 349px; margin-top: 10px;"
+					   placeholder="请输入参观人数"
+					   v-model="input"
+					   clearable>
+					 </el-input>
 					</div>
 				</div>
 			</div>
 			<div class="popFoot">
-				<div class="btn">
+				<div class="btn" @click="cancelOne">
 					取消
 				</div>
-				<div class="btn2">
+				<div class="btn2" @click="confirmOne">
 					确认
+				</div>
+			</div>
+		</div>
+	<div class="windowPop" v-if="windowShowTwo==true" style="max-height:600px;  overflow: auto;">
+		<div class="popHead">
+			申请入驻
+			<span @click="popDown">x</span>
+		</div>
+		<div class="popBody">
+			<div class="bodyLeft">
+				<div class="list">
+				 <div class="listTitle">
+				 	<span >
+				 		*
+				 	</span>
+					企业/项目名称
+				 </div>
+				 <el-input
+				 style="width: 349px; margin-top: 10px;"
+				   placeholder="请输入公司全称"
+				   v-model="input"
+				   clearable>
+				 </el-input>
+				</div>
+				<div class="list">
+				 <div class="listTitle">
+				 	<span >
+				 		*
+				 	</span>
+					所属行业
+				 </div>
+				 <el-input
+				 style="width: 349px; margin-top: 10px;"
+				   placeholder="请输入行业"
+				   v-model="input"
+				   clearable>
+				 </el-input>
+				</div>
+				<div class="list">
+				 <div class="listTitle">
+				 联系人
+				 </div>
+				   <el-input
+				   style="width: 349px; margin-top: 10px;"
+				     placeholder="请输入联系人"
+				     v-model="input"
+				     clearable>
+				   </el-input>
+				</div>
+				<div class="list">
+				 <div class="listTitle">
+				联系邮箱
+				 </div>
+				   <el-input
+				   style="width: 349px; margin-top: 10px;"
+				     placeholder="请输入联系邮箱"
+				     v-model="input"
+				     clearable>
+				   </el-input>
+				</div>
+		</div>
+			<div class="bodyRight">
+				<div class="list">
+				 <div class="listTitle">
+				 	<span >
+				 		*
+				 	</span>
+					所属性质
+				 </div>
+				 <el-input
+				 style="width: 349px; margin-top: 10px;"
+				   placeholder="请输入所属性质"
+				   v-model="input"
+				   clearable>
+				 </el-input>
+				</div>	
+					<div class="list">
+				 <div class="listTitle">
+				 	<span >
+				 		*
+				 	</span>
+					项目阶段
+				 </div>
+				 <el-input
+				 style="width: 349px; margin-top: 10px;"
+				   placeholder="请输入项目阶段"
+				   v-model="input"
+				   clearable>
+				 </el-input>
+				</div>
+				<div class="list">
+				 <div class="listTitle">
+				 	<span >
+				 		*
+				 	</span>
+					联系方式
+				 </div>
+				 <el-input
+				 style="width: 349px; margin-top: 10px;"
+				   placeholder="请输入联系方式"
+				   v-model="input"
+				   clearable>
+				 </el-input>
+				</div>
+				<div class="list">
+				 <div class="listTitle">
+				 	<span >
+				 		*
+				 	</span>
+					logo
+				 </div>
+				 <el-form :model="form">
+				<el-form-item>
+				  <el-upload ref="upload" action="/general/oss/upload" accept="image/png,image/gif,image/jpg,image/jpeg"
+				    list-type="picture-card" :auto-upload="false" 
+				    :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-success="handSuccess">
+				
+				    <i class="el-icon-plus"></i>
+				  </el-upload>
+				  <el-dialog :visible.sync="dialogVisible">
+				    <img width="100%" :src="dialogImageUrl" alt="">
+				  </el-dialog>
+				</el-form-item>
+				</el-form>
 				</div>
 				
 			</div>
 		</div>
+		<div class="popFoot">
+			<div class="btn" @click="cancelTwo">
+				取消
+			</div>
+			<div class="btn2" @click="confirmTwo">
+				确认
+			</div>
+		</div>
+	</div>
 		<img src="https://front.zlhuiyun.com/static/images/park.jpg" class="top-bg">
 		<div :style="{width:bWidth?bWidth+'px':'100%'}" style="background-color: #ffffff;">
-
-
 			<div class="top-info" :style="{width:width+'px'}">
 				<breadcrumb :list="list"></breadcrumb>
 			</div>
@@ -68,8 +264,8 @@
 						<div class="btn1" @click="appointment">
 							预约参观
 						</div>
-						<div class="btn1">
-							申请入住
+						<div class="btn1" @click="settled">
+							申请入驻
 						</div>
 						<div class="btn2">
 							<img src="../../public/images/分享.png">
@@ -87,16 +283,13 @@
 						{{item}}
 					</span>
 				</div>
-
 			</div>
 			<div class="bodyRight">
 				<div :id="`list${index}`" class="rightList" v-for="(item,index) in bodyList" :key="index">
 					<div class="listHead">
 						<div style="width:6px ; height: 20px;background-color: #EB6118 ;">
-
 						</div>
 						<span>{{item.title}}</span>
-
 					</div>
 					<div class="listBody">
 						{{item.content}}
@@ -106,10 +299,8 @@
 		</div>
 	</div>
 </template>
-
 <script>
 	import breadcrumb from '../components/breadcrumb.vue'
-
 	import {
 		mapState
 	} from "vuex";
@@ -120,9 +311,11 @@
 		},
 		data() {
 			return {
+				  form: {},
 				currentIndex: 0,
 				popShow: false,
 				windowShowOne:false,
+				windowShowTwo:false,
 				serve: [],
 				bodyList: [{
 					title: '空间详情',
@@ -142,17 +335,14 @@
 				list: [{
 						name: "首页",
 						href: '/',
-
 					},
 					{
 						name: "园区招商",
 						href: '/park',
-
 					},
 					{
 						name: "深圳5G产业园",
 						href: '',
-
 					}
 				],
 				info: {
@@ -176,10 +366,19 @@
 		},
 		components: {
 			breadcrumb,
-
-
 		},
 		methods: {
+			handlePictureCardPreview(file){
+				this.dialogImageUrl = file.url;
+				this.dialogVisible = true;
+			},
+			handleRemove(file, fileList) {
+			
+			
+			},
+			handSuccess(res,file,fileList){
+				 this.imgInfo=fileList
+			},
 			changeIndex(index) {
 				this.currentIndex = index
 				if (index == 0) {
@@ -212,11 +411,31 @@
 				this.popShow = true
 				this.windowShowOne=true
 			},
+			settled(){
+				this.popShow=true
+				this.windowShowTwo=true
+			},
 			popDown(){
 				this.popShow = false
 				this.windowShowOne=false
+				this.windowShowTwo=false
+			},
+			cancelOne(){
+				this.popShow = false
+				this.windowShowOne=false
+			},
+			confirmOne(){
+				this.popShow = false
+				this.windowShowOne=false
+			},
+			cancelTwo(){
+				this.popShow = false
+				this.windowShowTwo=false
+			},
+			confirmTwo(){
+				this.popShow = false
+				this.windowShowTwo=false
 			}
-			
 		}
 	}
 </script>
@@ -224,24 +443,25 @@
 <style lang="less" scoped="scoped">
 	.container {
 		background: #F6F6F6;
-
 		.windowPop {
 			background-color: #ffffff;
 			position: fixed;
-			top: 30%;
+			top: 10%;
 			left: 50%;
 			transform: translateX(-50%);
 			z-index: 199;
 			width: 800px;
-
 			.popHead {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				box-sizing: border-box;
 				padding: 30px;
 				font-size: 20px;
 				font-weight: 400;
 				color: #303030;
-				position: relative;
 				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
 				span {
 					font-size: 25px;
 					position: absolute;
@@ -254,11 +474,13 @@
 			}
 			.popBody {
 			    padding: 32px;
+				padding-top: 100px;
 				box-sizing: border-box;
 				display: flex;
 				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 				.bodyLeft{
 					.list{
+						margin-bottom: 40px;
 						.listTitle{
 							font-size: 16px;
 							font-weight: 400;
@@ -270,11 +492,30 @@
 								color: #EB6118;
 							}
 						}
-						
+					}
+				}
+				.bodyRight{
+					margin-left: 40px;
+					.list{
+						margin-bottom: 40px;
+						.listTitle{
+							font-size: 16px;
+							font-weight: 400;
+							color: #606060;
+							font-family: Microsoft YaHei;
+							span{
+								font-size: 16px;
+								font-weight: 400;
+								color: #EB6118;
+							}
+						}
 					}
 				}
 			}
 			.popFoot{
+				width: 100%;
+				background-color: #ffffff;
+				position: fixed;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -337,39 +578,30 @@
 			margin: 0 auto;
 			align-items: center;
 			background-color: #fff;
-
-
 		}
-
 		.contentHead {
 			margin: 20px auto;
 			box-sizing: border-box;
 			background-color: #ffffff;
 			padding: 20px;
-
 			.list {
 				display: flex;
-
 				.leftImg {
 					width: 400px;
 					height: 250px;
-
 					img {
 						width: 100%;
 						height: 100%;
 					}
 				}
-
 				.right {
 					margin-left: 30px;
-
 					.title {
 						font-size: 18px;
 						font-weight: 400;
 						color: #303030;
 						margin-bottom: 20px;
 					}
-
 					.item {
 						font-size: 14px;
 						font-weight: 400;
@@ -377,19 +609,15 @@
 						margin-top: 10px;
 						display: flex;
 						align-items: center;
-
 						img {
 							width: 13px;
 							height: 15px;
 							margin-right: 8px;
-
 						}
 					}
-
 					.btn {
 						display: flex;
 						margin-top: 20px;
-
 						.btn1 {
 							width: 100px;
 							height: 32px;
@@ -403,7 +631,6 @@
 							margin-right: 10px;
 							cursor: pointer;
 						}
-
 						.btn2 {
 							width: 100px;
 							height: 32px;
@@ -417,19 +644,16 @@
 							justify-content: center;
 							align-items: center;
 							cursor: pointer;
-
 							img {
 								width: 15px;
 								height: 15px;
 								margin-right: 5px;
 							}
 						}
-
 					}
 				}
 			}
 		}
-
 		.contentBody {
 			margin-top: 20px;
 			margin: 0 auto;
@@ -437,10 +661,8 @@
 			justify-content: space-between;
 			box-sizing: border-box;
 			padding-bottom: 184px;
-
 			.bodyLeft {
 				transition: all 0.3s;
-
 				.leftNav {
 					cursor: pointer;
 					width: 225px;
@@ -453,18 +675,15 @@
 					color: #909090;
 					margin-bottom: 10px;
 					transition: all 0.3s;
-
 					span {
 						margin-left: 47px;
 					}
 				}
-
 				.active {
 					border-left: 6px solid #EB6118;
 					color: #EB6118;
 					box-sizing: border-box;
 					transition: all 0.3s;
-
 					span {
 						margin-left: 41px;
 					}
@@ -474,11 +693,9 @@
 			.bodyRight {
 				margin-left: 40px;
 				width: 935px;
-
 				.rightList {
 					background-color: #ffffff;
 					margin-bottom: 20px;
-
 					.listHead {
 						padding: 30px;
 						border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -487,12 +704,10 @@
 						font-weight: 400;
 						color: #EB6118;
 						align-items: center;
-
 						span {
 							margin-left: 10px;
 						}
 					}
-
 					.listBody {
 						padding: 30px;
 						font-size: 14px;

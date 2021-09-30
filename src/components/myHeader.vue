@@ -37,7 +37,7 @@
 					href: './park'
 				}, {
 					name: '创新政策',
-					href: '/'
+					href: '/innovate'
 				}, {
 					name: '园区活动',
 					href: '/'
