@@ -43,7 +43,7 @@
 					href: '/'
 				}, {
 					name: '供需平台',
-					href: '/'
+					href: './supplyPlatform'
 				}, {
 					name: '科技资源',
 					href: '/'
@@ -89,8 +89,13 @@
 		watch:{
 			getQuery:{
 				handler(val){
-					if(val === '/')
+					console.log(val)
+					if(val === '/') {
 						this.activeIndex = 0
+					}
+					if(val ==='/supplyPlatform') {
+						this.activeIndex = 4
+					}
 				}
 			}
 		}

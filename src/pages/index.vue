@@ -68,9 +68,9 @@
 		</div>
 		<div class="common-item">
 			<div class="common-box img-link" :style="{width:width+'px'}">
-				<div class="img-link-inner" v-for="(item,index) in 3" :key="index">
-					<img src="https://front.zlhuiyun.com/static/images/1.jpg">
-					<div>政策服务</div>
+				<div class="img-link-inner" v-for="(item,index) in imgLinkList" :key="index" @click="toPage(item.href)">
+					<img :src="item.img">
+					<div>{{item.name}}</div>
 				</div>
 			</div>
 		</div>
@@ -81,7 +81,7 @@
 					<div class="supply-left">
 						<div class="supply-top">
 							<div><div class="supply-place"></div><span>产业资源</span>（共6条）</div>
-							<div>查看更多 ></div>
+							<div @click="toPage('./supplyPlatform?typeId=0')">查看更多 ></div>
 						</div>
 						<div class="supply-left-list">
 							<div class="supply-left-item" v-for="(item,index) in 6" :key="index">
@@ -99,7 +99,7 @@
 					<div class="supply-right">
 						<div class="supply-top" style="border-bottom: 1px solid rgba(0,0,0,0.1);">
 							<div><div class="supply-place"></div><span>需求信息</span>（共7条）</div>
-							<div>查看更多 ></div>
+							<div @click="toPage('./supplyPlatform?typeId=1')">查看更多 ></div>
 						</div>
 						<div class="supply-right-list">
 							<div v-for="(item,index) in 7" :key="index" class="supply-right-item">
@@ -157,7 +157,7 @@
 	export default {
 		name: 'index',
 		props: {
-			msg: String
+			
 		},
 		data() {
 			return {
@@ -188,12 +188,28 @@
 				}],
 				newsTab: ['新闻资讯','通知公告'],
 				newsIndex: 0,
+				imgLinkList: [{
+					name: '政策服务',
+					href: '/',
+					img: 'https://front.zlhuiyun.com/static/images/1.jpg'
+				},{
+					name: '投融资服务',
+					href: '/',
+					img: 'https://front.zlhuiyun.com/static/images/2.jpg'
+				},{
+					name: '优质项目',
+					href: '/',
+					img: 'https://front.zlhuiyun.com/static/images/3.jpg'
+				}]
 			}
 		},
 		mounted() {},
 		methods: {
 			changeNews(index) {
 				this.newsIndex = index
+			},
+			toPage(href) {
+				this.$router.push(href)
 			}
 		},
 		components: {
@@ -291,7 +307,7 @@
 						right: 0;
 					}
 					.news-left {
-						width: 790px;
+						flex: 2;
 						display: flex;
 						flex-direction: column;
 						margin-right: 30px;
@@ -305,12 +321,16 @@
 							margin-top: 10px;
 							position: relative;
 							.el-carousel {
-								width: 390px;
+								flex: 1;
+								margin-right: 30px;
+							}
+							.el-carousel:last-child {
+								margin-right: 0;
 							}
 						}
 					}
 					.news-right {
-						width: 380px;
+						flex: 1;
 						height: 570px;
 						display: flex;
 						flex-direction: column;
@@ -408,7 +428,7 @@
 					display: flex;
 					flex-wrap: wrap;
 					.active-item {
-						width: 380px;
+						flex: 1;
 						margin-right: 30px;
 						display: flex;
 						flex-direction: column;
@@ -443,6 +463,7 @@
 							img {
 								width: 100%;
 								height: 250px;
+								display: block;
 							}
 						}
 						.active-item-info {
@@ -524,7 +545,8 @@
 						}
 					}
 					.supply-left {
-						width: 790px;
+						// width: 790px;
+						flex: 2;
 						margin-right: 30px;
 						background-color: #fff;
 						.supply-left-list {
@@ -533,9 +555,9 @@
 							padding: 0 30px;
 							box-sizing: border-box;
 							.supply-left-item {
-								width: 350px;
+								width: 47%;
 								height: 160px;
-								margin-right: 30px;
+								margin-right: 6%;
 								padding: 15px;
 								box-sizing: border-box;
 								display: flex;
@@ -583,7 +605,8 @@
 						}
 					}
 					.supply-right {
-						width: 380px;
+						// width: 380px;
+						flex: 1;
 						background-color: #fff;
 						.supply-right-list {
 							display: flex;
@@ -603,7 +626,7 @@
 									margin: 0 10px;
 								}
 								p {
-									max-width: 250px;
+									max-width: 66%;
 								}
 							}
 						}
@@ -617,13 +640,15 @@
 				justify-content: space-between;
 
 				.img-link-inner {
-					width: 380px;
+					// width: 380px;
+					flex: 1;
+					margin-right: 30px;
 					height: 240px;
 					position: relative;
 					cursor: pointer;
 
 					img {
-						width: 380px;
+						width: 100%;
 						height: 240px;
 						object-fit: cover;
 					}

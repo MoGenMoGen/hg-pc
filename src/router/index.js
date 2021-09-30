@@ -4,6 +4,7 @@ import index from '../pages/index.vue'
 import park from '../pages/park.vue'
 import parkDetail from '../pages/parkDetail.vue'
 import newsinfo from '../pages/newsinfo.vue'
+import supplyPlatform from '../pages/supplyPlatform.vue'
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -29,6 +30,12 @@ export default new VueRouter({
 		path: '/newsinfo',
 		name: 'newsinfo',
 		component: newsinfo
+	},
+	{
+		// 供需平台
+		path: '/supplyPlatform',
+		name: 'supplyPlatform',
+		component: supplyPlatform
 	}
 ]
 })
