@@ -46,10 +46,10 @@
 					href: './supplyPlatform'
 				}, {
 					name: '科技资源',
-					href: '/'
+					href: '/scienceResource'
 				}, {
 					name: '投融资服务',
-					href: '/'
+					href: '/investService'
 				}, {
 					name: '智慧党建',
 					href: '/'
