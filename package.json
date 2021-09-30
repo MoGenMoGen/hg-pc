@@ -19,6 +19,7 @@
     "style-loader": "^2.0.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.1",
+    "vue-ueditor-wrap": "^2.4.1",
     "vuex": "^3.4.0"
   },
   "devDependencies": {

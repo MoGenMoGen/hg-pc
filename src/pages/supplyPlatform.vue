@@ -21,6 +21,7 @@
 				<serviceProvider v-if="currentIndex==2"></serviceProvider>
 			</div>
 		</div>
+		<vue-ueditor-wrap v-model="msg" :config="myConfig"></vue-ueditor-wrap>
 	</div>
 </template>
 
@@ -29,6 +30,7 @@
 	import industrialResources from '../components/industrialResources.vue'
 	import demandInfo from '../components/demandInfo.vue'
 	import serviceProvider from '../components/serviceProvider.vue'
+	import VueUeditorWrap from 'vue-ueditor-wrap'
 	import {
 		mapState
 	} from "vuex";
@@ -51,7 +53,26 @@
 					'需求信息',
 					'优质服务商'
 				],
-				currentIndex: 0
+				currentIndex: 0,
+				msg: '',
+				myConfig: {
+				  // 编辑器不自动被内容撑高
+				  autoHeightEnabled: false,
+				  // 初始容器高度
+				  initialFrameHeight: 440,
+				  // 初始容器宽度
+				  initialFrameWidth: "100%",
+				  // 上传文件接口（这个地址是我为了方便各位体验文件上传功能搭建的临时接口，请勿在生产环境使用！！！）
+				  serverUrl: "https://www.ship88.cn/general/ueditor/exec",
+				  // serverUrl: "https://www.ship88.cn/general/oss/upload",
+				
+				  UEDITOR_HOME_URL: "/UEditor/",
+				  // UEditor 资源文件的存放路径，如果你使用的是 vue-cli 生成的项目，通常不需要设置该选项，vue-ueditor-wrap 会自动处理常见的情况，如果需要特殊配置，参考下方的常见问题2
+				  // UEDITOR_HOME_URL:
+				  //   process.env.NODE_ENV === "production"
+				  //     ? "/static/ueditor/"
+				  //     : "/static/ueditor/"
+				},
 			}
 		},
 		mounted() {
@@ -71,7 +92,8 @@
 			breadcrumb,
 			industrialResources,
 			demandInfo,
-			serviceProvider
+			serviceProvider,
+			VueUeditorWrap
 		},
 		computed: {
 			...mapState([
