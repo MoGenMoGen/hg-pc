@@ -60,7 +60,7 @@
 							</div>
 						</div>
 						<div class="news-right-more">
-							<div>查看更多 ></div>
+							<div @click="lookMore">查看更多 ></div>
 						</div>
 					</div>
 				</div>
@@ -198,7 +198,7 @@
 					img: 'https://front.zlhuiyun.com/static/images/2.jpg'
 				},{
 					name: '优质项目',
-					href: '/',
+					href: './qualityProject',
 					img: 'https://front.zlhuiyun.com/static/images/3.jpg'
 				}]
 			}
@@ -210,6 +210,11 @@
 			},
 			toPage(href) {
 				this.$router.push(href)
+			},
+			lookMore() {
+				if(this.newsIndex == 1) {
+					this.$router.push('./notice')
+				}
 			}
 		},
 		components: {
@@ -344,7 +349,7 @@
 							align-items: center;
 							div {
 								text-align: center;
-								width: 190px;
+								flex: 1;
 								color: #909090;
 								font-size: 18px;
 								cursor: pointer;

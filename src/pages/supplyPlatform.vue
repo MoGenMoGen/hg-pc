@@ -21,7 +21,7 @@
 				<serviceProvider v-if="currentIndex==2"></serviceProvider>
 			</div>
 		</div>
-		<vue-ueditor-wrap v-model="msg" :config="myConfig"></vue-ueditor-wrap>
+		<!-- <vue-ueditor-wrap v-model="msg" :config="myConfig"></vue-ueditor-wrap> -->
 	</div>
 </template>
 

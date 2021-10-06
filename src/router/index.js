@@ -11,6 +11,8 @@ import innovateDetail from '../pages/innovateDetail.vue'
 import newsinfo from '../pages/newsinfo.vue'
 import investService from '../pages/investService.vue'
 import scienceResource from '../pages/scienceResource.vue'
+import notice from '../pages/notice.vue'
+import qualityProject from '../pages/qualityProject.vue'
 
 
 Vue.use(VueRouter)
@@ -34,14 +36,12 @@ export default new VueRouter({
 		component: parkDetail
 	},
 	{
-
 		// 供需平台
 		path: '/supplyPlatform',
 		name: 'supplyPlatform',
 		component: supplyPlatform,
 	},
 	{
-
 		// 创新政策
 		path: '/innovate',
 		name: 'innovate',
@@ -70,6 +70,18 @@ export default new VueRouter({
 		path: '/scienceResource',
 		name: 'scienceResource',
 		component: scienceResource
+	},
+	{
+		// 通知公告
+		path: '/notice',
+		name: 'notice',
+		component: notice
+	},
+	{
+		// 优质服务
+		path: '/qualityProject',
+		name: 'qualityProject',
+		component: qualityProject
 	}
 	]
 })
