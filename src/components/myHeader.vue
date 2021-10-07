@@ -40,7 +40,7 @@
 					href: '/innovate'
 				}, {
 					name: '园区活动',
-					href: '/'
+					href: '/activity'
 				}, {
 					name: '供需平台',
 					href: './supplyPlatform'
