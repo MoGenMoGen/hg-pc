@@ -17,23 +17,23 @@
 					<div class="news-left">
 						<div class="news-left-top">
 							<el-carousel height="300px" indicator-position="none">
-								<el-carousel-item v-for="item in 4" :key="item">
-									<img src="../../public/images/logo-1.png" style="width: 100%;height: 100%;">
-									<div class="news-title">1111</div>
+								<el-carousel-item v-for="item in 1" :key="item">
+									<img src="../../public/images/上.png" style="width: 100%;height: 100%;">
+									<div class="news-title one-line">防疫应急物资采购服务专区</div>
 								</el-carousel-item>
 							</el-carousel>
 						</div>
 						<div class="news-left-bottom">
 							<el-carousel height="260px" indicator-position="none">
-								<el-carousel-item v-for="item in 4" :key="item">
-									<img src="../../public/images/logo-1.png" style="width: 100%;height: 100%;">
-									<div class="news-title">1111</div>
+								<el-carousel-item v-for="item in 1" :key="item">
+									<img src="../../public/images/左.png" style="width: 100%;height: 100%;">
+									<div class="news-title one-line">新材料产业孵化共同体新闻速览</div>
 								</el-carousel-item>
 							</el-carousel>
 							<el-carousel height="260px" indicator-position="none">
-								<el-carousel-item v-for="item in 4" :key="item">
-									<img src="../../public/images/logo-1.png" style="width: 100%;height: 100%;">
-									<div class="news-title">1111</div>
+								<el-carousel-item v-for="item in 1" :key="item">
+									<img src="../../public/images/右.png" style="width: 100%;height: 100%;">
+									<div class="news-title one-line">“大生态+小生态”双轮驱动 761工场打造电控产业孵化新引擎 | 创孵直播“云参观”</div>
 								</el-carousel-item>
 							</el-carousel>
 						</div>
@@ -190,11 +190,11 @@
 				newsIndex: 0,
 				imgLinkList: [{
 					name: '政策服务',
-					href: '/',
+					href: './innovate',
 					img: 'https://front.zlhuiyun.com/static/images/1.jpg'
 				},{
 					name: '投融资服务',
-					href: '/',
+					href: './investService',
 					img: 'https://front.zlhuiyun.com/static/images/2.jpg'
 				},{
 					name: '优质项目',
@@ -212,7 +212,9 @@
 				this.$router.push(href)
 			},
 			lookMore() {
-				if(this.newsIndex == 1) {
+				if(this.newsIndex==0) {
+					this.$router.push('./newsinfo')
+				}else if(this.newsIndex == 1) {
 					this.$router.push('./notice')
 				}
 			}
@@ -283,7 +285,7 @@
 					justify-content: center;
 
 					img {
-						width: 19%;
+						width: calc((100% - 20px * 4) / 5);
 						height: 100px;
 						margin-right: 1%;
 						margin-bottom: 1%;

@@ -63,13 +63,33 @@
 				isLogin: false
 			}
 		},
-		watch: {
-			$route() {
-
-			},
-		},
 		mounted() {
-			
+			let val = this.$route.path
+			if(val === '/') {
+				this.activeIndex = 0
+			}else if(val ==='/park') {
+				this.activeIndex = 1
+			}else if(val ==='/innovate') {
+				this.activeIndex = 2
+			}else if(val ==='/activity') {
+				this.activeIndex = 3
+			}else if(val ==='/supplyPlatform') {
+				this.activeIndex = 4
+			}else if(val ==='/scienceResource') {
+				this.activeIndex = 5
+			}else if(val ==='/investService') {
+				this.activeIndex = 6
+			}else if(val ==='/party') {
+				this.activeIndex = 7
+			}else if(val ==='/newsinfo') {
+				this.activeIndex = 8
+			}else if(val ==='/aboutUs') {
+				this.activeIndex = 9
+			}else if(val ==='/notice') {
+				this.activeIndex = -1
+			}else if(val ==='/qualityProject') {
+				this.activeIndex = -1
+			}
 		},
 		methods: {
 			handleSelect(index, href) {
@@ -89,12 +109,30 @@
 		watch:{
 			getQuery:{
 				handler(val){
-					console.log(val)
 					if(val === '/') {
 						this.activeIndex = 0
-					}
-					if(val ==='/supplyPlatform') {
+					}else if(val ==='/park') {
+						this.activeIndex = 1
+					}else if(val ==='/innovate') {
+						this.activeIndex = 2
+					}else if(val ==='/activity') {
+						this.activeIndex = 3
+					}else if(val ==='/supplyPlatform') {
 						this.activeIndex = 4
+					}else if(val ==='/scienceResource') {
+						this.activeIndex = 5
+					}else if(val ==='/investService') {
+						this.activeIndex = 6
+					}else if(val ==='/party') {
+						this.activeIndex = 7
+					}else if(val ==='/newsinfo') {
+						this.activeIndex = 8
+					}else if(val ==='/aboutUs') {
+						this.activeIndex = 9
+					}else if(val ==='/notice') {
+						this.activeIndex = -1
+					}else if(val ==='/qualityProject') {
+						this.activeIndex = -1
 					}
 				}
 			}
