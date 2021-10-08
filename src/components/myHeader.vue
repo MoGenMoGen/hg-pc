@@ -58,7 +58,7 @@
 					href: '/newsinfo'
 				}, {
 					name: '关于我们',
-					href: '/'
+					href: '/aboutUs'
 				}],
 				isLogin: false
 			}

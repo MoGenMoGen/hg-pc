@@ -7,13 +7,12 @@ import newsinfo from '../pages/newsinfo.vue'
 import supplyPlatform from '../pages/supplyPlatform.vue'
 import innovate from '../pages/innovate.vue'
 import innovateDetail from '../pages/innovateDetail.vue'
-import newsinfo from '../pages/newsinfo.vue'
 import investService from '../pages/investService.vue'
 import scienceResource from '../pages/scienceResource.vue'
 import notice from '../pages/notice.vue'
 import qualityProject from '../pages/qualityProject.vue'
-import innovateDetail from '../pages/innovateDetail.vue' 
 import activity from '../pages/activity.vue'
+import aboutUs from '../pages/aboutUs.vue'
 
 Vue.use(VueRouter)
 
@@ -82,7 +81,8 @@ export default new VueRouter({
 		path: '/qualityProject',
 		name: 'qualityProject',
 		component: qualityProject
-	}
+	},
+	{
 			path: '/',
 			name: 'index',
 			component: index
@@ -128,6 +128,12 @@ export default new VueRouter({
 			path: '/activity',
 			name: 'activity',
 			component: activity 
+		},
+		{
+			//关于我们
+			path: '/aboutUs',
+			name: 'aboutUs',
+			component: aboutUs 
 		}
 	]
 })
