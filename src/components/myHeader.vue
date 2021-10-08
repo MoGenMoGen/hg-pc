@@ -52,14 +52,15 @@
 					href: '/investService'
 				}, {
 					name: '智慧党建',
-					href: '/'
+					href: '/partyBuild'
 				}, {
 					name: '新闻资讯',
 					href: '/newsinfo'
 				}, {
 					name: '关于我们',
 					href: '/aboutUs'
-				}],
+				}
+				],
 				isLogin: false
 			}
 		},
